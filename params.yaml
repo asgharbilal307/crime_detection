@@ -1,0 +1,36 @@
+data:
+  dataset_root: "Gun_Action_Recognition_Dataset"
+  output_root: "data/processed"
+  frame_skip: 5
+  frame_skip_no_gun: 50
+  train_split: 0.8
+
+validation:
+  min_images_train: 100
+  min_images_val: 20
+  max_null_ratio: 0.0
+  min_bbox_size: 0.001
+  max_bbox_size: 1.0
+  expected_classes: [0, 1]
+
+baseline:
+  model_size: "yolov8n"
+  epochs: 50
+  img_size: 640
+  batch_size: 16
+  patience: 15
+  conf_threshold: 0.25
+  device: "0"
+
+main:
+  model_size: "yolov8s"
+  epochs: 100
+  img_size: 640
+  batch_size: 8
+  patience: 20
+  conf_threshold: 0.25
+  device: "0"
+
+mlflow:
+  experiment_name: "crimewatch-firearm-detection"
+  registered_model_name: "crimewatch-gun-detector"
